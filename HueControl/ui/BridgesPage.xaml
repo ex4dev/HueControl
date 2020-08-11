@@ -1,0 +1,27 @@
+﻿<Page x:Class="HueControl.BridgesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:HueControl"
+      mc:Ignorable="d"
+      Title="BridgesPage">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <ListBox Name="ListBox" Width="250" Grid.Column="0" SelectionChanged="ListBox_OnSelected">
+            <ListBoxItem Name="SearchingItem">Searching for bridges...</ListBoxItem>
+        </ListBox>
+        <Border Padding="10,0,10,0" Grid.Column="1">
+            <StackPanel Orientation="Vertical" Name="OptionsPanel" Visibility="Collapsed">
+                <TextBlock Text="Loading..." Name="OptionIP" />
+                <TextBlock Text="Loading..." Name="OptionID" />
+                <Button Click="OptionAppKeyGen_OnClick" Name="OptionSetUp">Set up...</Button>
+                <Button Click="OptionMakeDefault_OnClick" Name="OptionMakeDefault" Visibility="Collapsed">Use bridge</Button>
+                <Button Click="OptionDeleteConfig_OnClick" Name="OptionDeleteConfig" Visibility="Collapsed">Delete configuration</Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

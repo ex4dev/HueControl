@@ -1,0 +1,17 @@
+﻿<Page x:Class="HueControl.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:HueControl"
+      mc:Ignorable="d"
+      Title="HomePage">
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock TextAlignment="Center" HorizontalAlignment="Center" FontSize="75" Text="HueControl" />
+        <TextBlock TextAlignment="Center" HorizontalAlignment="Center" FontSize="20"
+                   Text="The best way to manage your light setup." />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button>Learn More</Button>
+        </StackPanel>
+    </StackPanel>
+</Page>

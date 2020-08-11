@@ -1,0 +1,52 @@
+﻿<Page x:Class="HueControl.OptionsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:HueControl"
+      mc:Ignorable="d"
+      Title="Options">
+    <StackPanel Orientation="Vertical">
+        <StackPanel.Resources>
+            <Style TargetType="{x:Type Button}">
+                <Setter Property="Margin" Value="0,2,0,2" />
+            </Style>
+        </StackPanel.Resources>
+        <TextBlock Text="All changes saved." Name="SavingLabel" /> 
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="Hue Bridges" FontSize="20" />
+            <TextBlock
+                Text="Go to the Bridges page to manage your Hue Bridges"
+                TextWrapping="WrapWithOverflow" Margin="0,2,0,2" />
+            <Button HorizontalAlignment="Left" Width="100" Content="Go to Bridges" Click="AutoDetectBridges" />
+        </StackPanel>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="Debug" FontSize="20" />
+            <CheckBox Name="DebugPrintInfo" Checked="DebugBoxClicked" Unchecked="DebugBoxClicked" Content="Print info to the event log." />
+            <CheckBox Name="DebugPrintErr" Checked="DebugBoxClicked" Unchecked="DebugBoxClicked" Content="Print errors to the event log." />
+        </StackPanel>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="Events" FontSize="20" />
+            <TextBlock
+                Text="Events allows you to respond to changing conditions on your computer with lighting changes. It runs as a system service in the background. These features are coming soon!"
+                TextWrapping="WrapWithOverflow" />
+            <Button Visibility="Collapsed" Click="SetUpEventsService" Width="100" HorizontalAlignment="Left" Name="EventsInstall">Install service</Button>
+            <StackPanel Name="EventsInstalledPanel" Orientation="Vertical">
+                <CheckBox>Enable the Events service on startup</CheckBox>
+                <Button Click="SetUpEvents" Width="100" HorizontalAlignment="Left">Configure events</Button>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Collapsed">
+                    <Button Width="100">Start</Button>
+                    <Button Width="100">Stop</Button>
+                    <Button Width="100">Restart</Button>
+                    <Button Width="100">Uninstall</Button>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="Reset" FontSize="20" />
+            <TextBlock Text="If something isn't working right, you can try resetting the app. This will remove all saved configuration, including bridge info." TextWrapping="WrapWithOverflow"/>
+            <Button Width="100" Click="ResetApp">Reset</Button>
+        </StackPanel>
+        </StackPanel>
+</Page>

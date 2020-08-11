@@ -1,0 +1,33 @@
+﻿<Page x:Class="HueControl.LightsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:HueControl"
+      mc:Ignorable="d"
+      Title="LightsPage">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <ListBox Name="ListBox" Width="250" Grid.Column="0" SelectionChanged="ListBox_OnSelected">
+            <ListBoxItem Name="SearchingItem">Searching for lights...</ListBoxItem>
+        </ListBox>
+        <Border Grid.Column="1" Padding="10,0,10,0">
+            <StackPanel Orientation="Vertical" Name="OptionsPanel" Visibility="Collapsed">
+                <TextBlock Text="Loading..." Name="OptionName" />
+                <TextBlock Text="Loading..." Name="OptionID" />
+                <TextBlock Text="Loading..." Name="OptionModel" />
+                <TextBlock Text="Loading..." Name="OptionVersion" />
+                <CheckBox Content="Light On" Name="OptionEnabled" Checked="LightEnabled" Unchecked="LightEnabled" />
+                <StackPanel Orientation="Horizontal">
+                    <Slider Name="OptionBrightness" ValueChanged="BrightnessChanged" Value="0" Minimum="0"
+                            Maximum="254"
+                            Width="100" />
+                    <TextBlock Text="0" Name="OptionBrightnessText" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

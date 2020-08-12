@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
 using Q42.HueApi;
 using Q42.HueApi.Models.Bridge;
 
@@ -18,31 +18,29 @@ namespace HueControlSettings.bridges
 
         public static async Task<LocatedBridge> FindHueBridgeByIP(string ip)
         {
-            foreach (var bridge in await FindHueBridges())
-            {
+            foreach (LocatedBridge bridge in await FindHueBridges())
                 if (bridge.IpAddress.Equals(ip))
                     return bridge;
-            }
 
             return null;
         }
 
         public static async Task<LocatedBridge> FindHueBridgeByID(string id)
         {
-            foreach (var bridge in await FindHueBridges())
-            {
+            foreach (LocatedBridge bridge in await FindHueBridges())
                 if (bridge.BridgeId.Equals(id))
                     return bridge;
-            }
 
             return null;
         }
 
-        public static async Task<string> GenerateAppKey()
+        public static async Task<string> GenerateAppKey(LocalHueClient client)
         {
             try
             {
-                return await Common.HueClient.RegisterAsync("HueControl", System.Net.Dns.GetHostName());
+                string? key = await client.RegisterAsync("HueControl", Dns.GetHostName());
+                Console.WriteLine("App key received! " + key);
+                return key;
             }
             catch (Exception)
             {
@@ -61,7 +59,8 @@ namespace HueControlSettings.bridges
             {
                 Common.BridgeID = id;
                 LocalHueClient client = new LocalHueClient(ip);
-                BridgeJson bridgeJson = (BridgeJson) FileUtils.GetFromAppdataAsyncJson("bridge-" + id + ".json", typeof(BridgeJson)).Result;
+                BridgeJson bridgeJson =
+                    (BridgeJson) FileUtils.GetFromAppdataAsyncJson("bridge-" + id + ".json", typeof(BridgeJson)).Result;
                 client.Initialize(bridgeJson.appId);
                 Common.HueClient = client;
 
@@ -76,9 +75,9 @@ namespace HueControlSettings.bridges
 
     public class BridgeJson
     {
-        public string ip;
-        public string id;
         public string appId;
+        public string id;
+        public string ip;
 
         public BridgeJson(string ip, string id, string appId)
         {

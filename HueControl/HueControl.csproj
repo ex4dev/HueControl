@@ -29,9 +29,6 @@
       <Page Update="ui\keygen\BridgeKeyGenWindow.xaml">
         <Generator></Generator>
       </Page>
-      <Page Update="ui\keygen\KeyGenIntroPage.xaml">
-        <Generator></Generator>
-      </Page>
       <Page Update="ui\InputDialog.xaml">
         <Generator></Generator>
       </Page>
@@ -56,9 +53,6 @@
       <Compile Update="ui\keygen\BridgeKeyGenWindow.xaml.cs">
         <DependentUpon>BridgeKeyGenWindow.xaml</DependentUpon>
       </Compile>
-      <Compile Update="ui\keygen\KeyGenIntroPage.xaml.cs">
-        <DependentUpon>KeyGenPage.xaml</DependentUpon>
-      </Compile>
       <Compile Update="ui\InputDialog.xaml.cs">
         <DependentUpon>InputDialog.xaml</DependentUpon>
       </Compile>
@@ -72,23 +66,23 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Q42.HueApi" Version="3.15.4"/>
+      <PackageReference Include="Q42.HueApi" Version="3.15.4"/>
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="assets\minus-solid.png"/>
+      <None Remove="assets\minus-solid.png"/>
     <Resource Include="assets\minus-solid.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <None Remove="assets\plus-solid.png"/>
+      <None Remove="assets\plus-solid.png"/>
     <Resource Include="assets\plus-solid.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <None Remove="assets\search-solid.png"/>
+      <None Remove="assets\search-solid.png"/>
     <Resource Include="assets\search-solid.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <None Remove="assets\terminal-solid.png"/>
+      <None Remove="assets\terminal-solid.png"/>
     <Resource Include="assets\terminal-solid.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

@@ -12,7 +12,7 @@
             <TextBlock TextAlignment="Left" FontSize="48">Bridge setup</TextBlock>
             <TextBlock Name="BridgeNameLabel" />
             <Separator Margin="0,5,0,20" />
-            <Frame Source="KeyGenIntroPage.xaml" />
+            <TextBlock FontSize="15" TextWrapping="WrapWithOverflow" Name="Instructions">Press the button on the bridge. We'll let you know when it goes through.</TextBlock>
         </StackPanel>
     </Border>
 </Window>

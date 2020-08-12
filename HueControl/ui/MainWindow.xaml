@@ -26,12 +26,13 @@
                 <Border Padding="0,0,0,7">
                     <StackPanel Orientation="Vertical" Name="Header" Visibility="Collapsed">
                         <TextBlock TextAlignment="Center" FontSize="48" Name="Title" />
-                        <TextBlock TextAlignment="Center" Name="Subtitle" TextWrapping="WrapWithOverflow" Padding="0,5,0,0"/>
+                        <TextBlock TextAlignment="Center" Name="Subtitle" TextWrapping="WrapWithOverflow"
+                                   Padding="0,5,0,0" />
                         <Separator />
                     </StackPanel>
                 </Border>
                 <Frame NavigationUIVisibility="Hidden" Name="contentFrame" Source="HomePage.xaml"
-                       HorizontalAlignment="Center" VerticalAlignment="Top" />
+                       HorizontalAlignment="Center" VerticalAlignment="Top" Navigated="OnContentUpdated" />
             </StackPanel>
         </ScrollViewer>
     </Grid>

@@ -20,37 +20,48 @@ namespace HueControl
             string s = button.Content.ToString();
 
             if (s.Equals("HueControl"))
-            {
                 contentFrame.Navigate(new Uri("ui/HomePage.xaml", UriKind.Relative));
+            else if (s.Equals("Options"))
+                contentFrame.Navigate(new Uri("ui/OptionsPage.xaml", UriKind.Relative));
+            else if (s.Equals("Lights"))
+                contentFrame.Navigate(new Uri("ui/LightsPage.xaml", UriKind.Relative));
+            else if (s.Equals("Events"))
+                contentFrame.Navigate(new Uri("ui/EventsPage.xaml", UriKind.Relative));
+            else if (s.Equals("Bridges")) contentFrame.Navigate(new Uri("ui/BridgesPage.xaml", UriKind.Relative));
+        }
+
+        private void OnContentUpdated(object sender, EventArgs eventArgs)
+        {
+            Frame frame = (Frame) sender;
+            string s = frame.Source.OriginalString;
+
+            if (s.Equals("ui/HomePage.xaml"))
+            {
                 Header.Visibility = Visibility.Collapsed;
             }
-            else if (s.Equals("Options"))
+            else if (s.Equals("ui/OptionsPage.xaml"))
             {
                 Header.Visibility = Visibility.Visible;
                 Title.Text = "Options";
                 Subtitle.Text = "Configure and customize HueControl.";
-                contentFrame.Navigate(new Uri("ui/OptionsPage.xaml", UriKind.Relative));
             }
-            else if (s.Equals("Lights"))
+            else if (s.Equals("ui/LightsPage.xaml"))
             {
                 Header.Visibility = Visibility.Visible;
                 Title.Text = "Lights";
                 Subtitle.Text = "View and set the properties of each light. Select a light below for more options.";
-                contentFrame.Navigate(new Uri("ui/LightsPage.xaml", UriKind.Relative));
             }
-            else if (s.Equals("Events"))
+            else if (s.Equals("ui/EventsPage.xaml"))
             {
                 Header.Visibility = Visibility.Visible;
                 Title.Text = "Events";
                 Subtitle.Text = "Respond to events with changes in lighting";
-                contentFrame.Navigate(new Uri("ui/EventsPage.xaml", UriKind.Relative));
             }
-            else if (s.Equals("Bridges"))
+            else if (s.Equals("ui/BridgesPage.xaml"))
             {
                 Header.Visibility = Visibility.Visible;
                 Title.Text = "Bridges";
                 Subtitle.Text = "Select a bridge below for more options.";
-                contentFrame.Navigate(new Uri("ui/BridgesPage.xaml", UriKind.Relative));
             }
         }
     }

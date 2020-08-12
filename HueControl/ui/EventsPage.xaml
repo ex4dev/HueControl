@@ -7,5 +7,42 @@
       mc:Ignorable="d"
       Title="Events">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Column="0" Width="500" Name="EventPanel">
+            <ToolBar>
+                <Button Click="NewEvent">
+                    <Image Source="../assets/plus-solid.png" Width="16" Height="16" />
+                </Button>
+                <Button>
+                    <Image Source="../assets/minus-solid.png" Width="16" Height="16" />
+                </Button>
+            </ToolBar>
+            <ListBox Name="EventList" SelectionChanged="EventSelected">
+                <ListBoxItem Name="SearchingItemEvents">Getting events...</ListBoxItem>
+            </ListBox>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Column="1" Width="500" Name="ActionPanel" Visibility="Collapsed">
+            <ToolBar>
+                <Button Click="NewAction">
+                    <Image Source="../assets/plus-solid.png" Width="16" Height="16" />
+                </Button>
+                <Button>
+                    <Image Source="../assets/minus-solid.png" Width="16" Height="16" />
+                </Button>
+                <Button>
+                    <Image Source="../assets/terminal-solid.png" Width="16" Height="16" />
+                </Button>
+            </ToolBar>
+            <ListBox Name="ActionList" SelectionChanged="ActionSelected">
+                <ListBoxItem Name="SearchingItemActions">Select an event to view actions.</ListBoxItem>
+            </ListBox>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Column="2" Width="500" Name="OptionsPanel" Visibility="Collapsed">
+            <TextBlock>Options!</TextBlock>
+        </StackPanel>
     </Grid>
 </Page>

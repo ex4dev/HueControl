@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Q42.HueApi;
 
 namespace HueControlSettings
 {
@@ -22,7 +24,7 @@ namespace HueControlSettings
 
             return true;
         }
-        
+
         public static async Task<object> GetFromAppdataAsyncJson(string filename, Type type)
         {
             string path = Path.Combine(GetAppdataPath(), filename);
@@ -31,7 +33,7 @@ namespace HueControlSettings
 
             return JsonConvert.DeserializeObject(text, type);
         }
-        
+
         public static async Task<object> GetFromAppdataAsyncJson(string filename)
         {
             string path = Path.Combine(GetAppdataPath(), filename);
@@ -50,7 +52,7 @@ namespace HueControlSettings
 
         public static string GetAppdataPath()
         {
-            var path = Path.Combine(Environment.GetFolderPath(
+            string path = Path.Combine(Environment.GetFolderPath(
                 Environment.SpecialFolder.ApplicationData), "HueControl");
 
             Directory.CreateDirectory(path);
@@ -61,20 +63,23 @@ namespace HueControlSettings
 
     public class HueControlConfig
     {
-        public string DefaultBridge;
-        public bool Debug_PrintInfo;
         public bool Debug_PrintErrors;
+        public bool Debug_PrintInfo;
+        public string DefaultBridge;
+        public List<Event> Events;
         public bool Events_EnableService;
-        
+
+
         public HueControlConfig()
         {
             DefaultBridge = "<NONE>";
             Debug_PrintInfo = false;
             Debug_PrintErrors = true;
             Events_EnableService = false;
+            Events = new List<Event>();
         }
 
-       
+
         public async Task<HueControlConfig> SaveConfigAsync()
         {
             await FileUtils.SaveToAppdataAsyncJson("config.json", this);
@@ -85,6 +90,7 @@ namespace HueControlSettings
         {
             return (HueControlConfig) await FileUtils.GetFromAppdataAsyncJson("config.json", typeof(HueControlConfig));
         }
+
         public static HueControlConfig ReadConfig()
         {
             try
@@ -97,6 +103,24 @@ namespace HueControlSettings
                 return new HueControlConfig().SaveConfigAsync().Result;
             }
         }
-        
+
+        public class Event
+        {
+            public string Bridge; // bridge id the event is on
+            public string Cause; //
+
+            public Dictionary<string, LightCommand>
+                Effects = new Dictionary<string, LightCommand>(); // key = light id, value = effect
+
+            public string Name;
+
+
+            public Event(string name, string cause, string bridge)
+            {
+                Name = name;
+                Cause = cause;
+                Bridge = bridge;
+            }
+        }
     }
 }

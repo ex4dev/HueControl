@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <UserSecretsId>dotnet-HueControlEvents-1C49BCCD-2CA7-4D96-A81F-363A8EEB3DA1</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.0"/>
+        <PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.0-preview.7.20364.11"/>
+        <PackageReference Include="Newtonsoft.Json" Version="12.0.3"/>
+        <PackageReference Include="Q42.HueApi" Version="3.15.4"/>
+    </ItemGroup>
+</Project>

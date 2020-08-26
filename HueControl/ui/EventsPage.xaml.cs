@@ -131,5 +131,24 @@ namespace HueControl
 
             OptionsPanel.Visibility = Visibility.Visible;
         }
+
+        private void RemoveEvent(object sender, RoutedEventArgs args)
+        {
+            config.Events.RemoveAll(delegate(HueControlConfig.Event e) { return (e.Name.Equals(SelectedEvent)); });
+            Task.Run(() =>
+            {
+                var a = config.SaveConfigAsync().Result;
+            });
+        }
+
+        private void RemoveAction(object sender, RoutedEventArgs args)
+        {
+            HueControlConfig.Event e = config.Events.Find(e2 => e2.Name.Equals(SelectedEvent));
+            e.Effects.Remove(SelectedAction);
+            Task.Run(() =>
+            {
+                var a = config.SaveConfigAsync().Result;
+            });
+        }
     }
 }

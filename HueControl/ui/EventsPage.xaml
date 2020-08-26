@@ -17,7 +17,7 @@
                 <Button Click="NewEvent">
                     <Image Source="../assets/plus-solid.png" Width="16" Height="16" />
                 </Button>
-                <Button>
+                <Button Click="RemoveEvent">
                     <Image Source="../assets/minus-solid.png" Width="16" Height="16" />
                 </Button>
             </ToolBar>
@@ -30,7 +30,7 @@
                 <Button Click="NewAction">
                     <Image Source="../assets/plus-solid.png" Width="16" Height="16" />
                 </Button>
-                <Button>
+                <Button Click="RemoveAction">
                     <Image Source="../assets/minus-solid.png" Width="16" Height="16" />
                 </Button>
                 <Button>

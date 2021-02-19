@@ -7,33 +7,45 @@
         mc:Ignorable="d"
         Title="HueControl" Height="450" Width="800">
     <Grid>
-        <Grid.ColumnDefinitions>
+        <!-- <Grid.ColumnDefinitions>
             <ColumnDefinition Width="30*" />
             <ColumnDefinition Width="70*" />
-        </Grid.ColumnDefinitions>
+        </Grid.ColumnDefinitions> -->
 
-        <Border Background="#454545" Grid.Column="0" />
+        <!-- <Border Background="#454545" Grid.Column="0" /> -->
         <!-- <Border Background="#242323" Grid.Column="1" /> -->
-        <StackPanel Grid.Column="0">
+        <!-- <StackPanel Grid.Column="0">
             <Button Height="40" Click="ChangeContent">HueControl</Button>
             <Button Height="40" Click="ChangeContent">Bridges</Button>
             <Button Height="40" Click="ChangeContent">Lights</Button>
             <Button Height="40" Click="ChangeContent">Events</Button>
             <Button Height="40" Click="ChangeContent">Options</Button>
-        </StackPanel>
-        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" Padding="10,0,10,10">
-            <StackPanel Orientation="Vertical">
-                <Border Padding="0,0,0,7">
-                    <StackPanel Orientation="Vertical" Name="Header" Visibility="Collapsed">
-                        <TextBlock TextAlignment="Center" FontSize="48" Name="Title" />
-                        <TextBlock TextAlignment="Center" Name="Subtitle" TextWrapping="WrapWithOverflow"
-                                   Padding="0,5,0,0" />
-                        <Separator />
-                    </StackPanel>
-                </Border>
-                <Frame NavigationUIVisibility="Hidden" Name="contentFrame" Source="HomePage.xaml"
-                       HorizontalAlignment="Center" VerticalAlignment="Top" Navigated="OnContentUpdated" />
-            </StackPanel>
-        </ScrollViewer>
+        </StackPanel> -->
+        <TabControl Name="TopTabs" >
+            <TabControl.ContentTemplate>
+                <DataTemplate>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="10,0,10,10">
+                        <StackPanel Orientation="Vertical">
+                            <Border Padding="0,0,0,7">
+                                <StackPanel Orientation="Vertical" Name="Header" Visibility="Collapsed">
+                                    <TextBlock TextAlignment="Center" FontSize="48" Name="Title" />
+                                    <TextBlock TextAlignment="Center" Name="Subtitle" TextWrapping="WrapWithOverflow"
+                                               Padding="0,5,0,0" />
+                                    <Separator />
+                                </StackPanel>
+                            </Border>
+                            <Frame NavigationUIVisibility="Hidden" Name="contentFrame" Source="HomePage.xaml"
+                                   HorizontalAlignment="Center" VerticalAlignment="Top" Loaded="OnFrameLoaded"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </DataTemplate>
+            </TabControl.ContentTemplate>
+            
+            <TabItem Header="Home" x:Name="HomeTab" Selector.Selected="OnTabChanged" />
+            <TabItem Header="Bridges" x:Name="BridgesTab" Selector.Selected="OnTabChanged" />
+            <TabItem Header="Lights" x:Name="LightsTab" Selector.Selected="OnTabChanged" />
+            <TabItem Header="Events" x:Name="EventsTab" Selector.Selected="OnTabChanged" />
+            <TabItem Header="Options" x:Name="OptionsTab" Selector.Selected="OnTabChanged" />
+        </TabControl>
     </Grid>
 </Window>

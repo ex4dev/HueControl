@@ -7,11 +7,8 @@
       mc:Ignorable="d"
       Title="HomePage">
     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock TextAlignment="Center" HorizontalAlignment="Center" FontSize="75" Text="HueControl" />
+        <TextBlock TextAlignment="Center" HorizontalAlignment="Center" FontSize="50" Text="Welcome to HueControl" />
         <TextBlock TextAlignment="Center" HorizontalAlignment="Center" FontSize="20"
-                   Text="The best way to manage your light setup." />
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button>Learn More</Button>
-        </StackPanel>
+                   Text="We've changed some things around here." />
     </StackPanel>
 </Page>

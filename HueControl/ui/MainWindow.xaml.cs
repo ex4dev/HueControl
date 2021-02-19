@@ -9,28 +9,13 @@ namespace HueControl
     /// </summary>
     public partial class MainWindow : Window
     {
+        private dynamic frame = null;
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void ChangeContent(object sender, RoutedEventArgs e)
-        {
-            Button button = (Button) sender;
-            string s = button.Content.ToString();
-
-            if (s.Equals("HueControl"))
-                contentFrame.Navigate(new Uri("ui/HomePage.xaml", UriKind.Relative));
-            else if (s.Equals("Options"))
-                contentFrame.Navigate(new Uri("ui/OptionsPage.xaml", UriKind.Relative));
-            else if (s.Equals("Lights"))
-                contentFrame.Navigate(new Uri("ui/LightsPage.xaml", UriKind.Relative));
-            else if (s.Equals("Events"))
-                contentFrame.Navigate(new Uri("ui/EventsPage.xaml", UriKind.Relative));
-            else if (s.Equals("Bridges")) contentFrame.Navigate(new Uri("ui/BridgesPage.xaml", UriKind.Relative));
-        }
-
-        private void OnContentUpdated(object sender, EventArgs eventArgs)
+        /*private void OnContentUpdated(object sender, EventArgs eventArgs)
         {
             Frame frame = (Frame) sender;
             string s = frame.Source.OriginalString;
@@ -63,6 +48,22 @@ namespace HueControl
                 Title.Text = "Bridges";
                 Subtitle.Text = "Select a bridge below for more options.";
             }
+        } */
+
+        private void OnFrameLoaded(dynamic sender, EventArgs e)
+        {
+            frame = sender;
+            MessageBox.Show("Frame loaded.");
+            
+            //MessageBox.Show(sender.Parent.ToString());
+            //string tabName = sender.Parent.Header;
+            //sender.Navigate(new Uri(tabName + "Page.xaml", UriKind.Relative));
+        }
+
+        private void OnTabChanged(dynamic sender, RoutedEventArgs e)
+        {
+            if (frame == null) return;
+            frame.Navigate(new Uri("ui/" + sender.Header + "Page.xaml", UriKind.Relative));
         }
     }
 }
